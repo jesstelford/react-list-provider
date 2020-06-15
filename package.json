@@ -1,7 +1,7 @@
 {
   "name": "react-list-provider",
   "description": "Use Context to save lists of whatever you want, then access them anywhere in your componpent tree.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "source": "src/index.js",
   "main": "dist/react-list-provider.js",
   "module": "dist/react-list-provider.module.js",
@@ -16,6 +16,9 @@
   },
   "license": "MIT",
   "repository": "https://github.com/jesstelford/react-list-provider.git",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "eslint": "^7.2.0",
     "microbundle": "^0.12.0",
