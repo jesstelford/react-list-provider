@@ -1,7 +1,7 @@
 {
   "name": "react-list-provider",
   "description": "Use Context to save lists of whatever you want, then access them anywhere in your componpent tree.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "source": "src/index.js",
   "main": "dist/react-list-provider.js",
   "module": "dist/react-list-provider.module.js",
