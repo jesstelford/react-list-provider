@@ -7,7 +7,7 @@
   "module": "dist/react-list-provider.module.js",
   "unpkg": "dist/react-list-provider.umd.js",
   "scripts": {
-    "build": "microbundle",
+    "build": "microbundle --jsx React.createElement",
     "dev": "microbundle watch",
     "test": "jest --silent",
     "lint:eslint": "eslint ./src",
