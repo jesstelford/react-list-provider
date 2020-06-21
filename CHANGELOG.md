@@ -1,6 +1,14 @@
 # react-list-provider
 
+## 1.1.1
+
+### Patch Changes
+
+- Fix build output
+
 ## 1.1.0
+
+**Deprecated**
 
 ### Minor Changes
 
@@ -13,6 +21,8 @@
 - 708303e: Production build now correctly uses React for rendering
 
 ## 1.0.0
+
+**Deprecated**
 
 ### Major Changes
 
