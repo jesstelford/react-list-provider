@@ -1,5 +1,11 @@
 # react-list-provider
 
+## 1.1.0
+
+### Minor Changes
+
+- 2cd9a7d: Added removeItems for removing multiple items at once.
+
 ## 1.0.1
 
 ### Patch Changes
