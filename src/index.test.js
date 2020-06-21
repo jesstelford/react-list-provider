@@ -196,6 +196,7 @@ describe('context value', () => {
                   ...(keyField && {
                     updateItem: expect.any(Function),
                     removeItem: expect.any(Function),
+                    removeItems: expect.any(Function),
                     getItem: expect.any(Function),
                     hasItem: expect.any(Function),
                   }),
@@ -379,6 +380,52 @@ test('removeItem works', () => {
   fireEvent.click(container.querySelector('button#add2'));
   expect(container.querySelector('span').textContent).toEqual(
     JSON.stringify([firstItem, secondItem])
+  );
+  fireEvent.click(container.querySelector('button#remove'));
+  expect(container.querySelector('span').textContent).toEqual(
+    JSON.stringify([secondItem])
+  );
+});
+
+test('removeItems works', () => {
+  const name = getUniqueName();
+  const firstItem = { this: 'that', key: 1 };
+  const secondItem = { foo: 'bar', key: 2 };
+  const thirdItem = { quux: 'zip', key: 3 };
+  const { container } = render(
+    <ListProvider name={name} keyBy="key">
+      <ListConsumer name={name}>
+        {(ctx) => {
+          return (
+            <div>
+              <button id="add1" onClick={() => ctx.addItem(firstItem)}>
+                Add item 1
+              </button>
+              <button id="add2" onClick={() => ctx.addItem(secondItem)}>
+                Add item 2
+              </button>
+              <button id="add3" onClick={() => ctx.addItem(thirdItem)}>
+                Add item 3
+              </button>
+              <button
+                id="remove"
+                onClick={() => ctx.removeItems([firstItem.key, thirdItem.key])}
+              >
+                Remove
+              </button>
+              <span>{JSON.stringify(ctx.items)}</span>
+            </div>
+          );
+        }}
+      </ListConsumer>
+    </ListProvider>
+  );
+  expect(container.querySelector('span').textContent).toEqual('[]');
+  fireEvent.click(container.querySelector('button#add1'));
+  fireEvent.click(container.querySelector('button#add2'));
+  fireEvent.click(container.querySelector('button#add3'));
+  expect(container.querySelector('span').textContent).toEqual(
+    JSON.stringify([firstItem, secondItem, thirdItem])
   );
   fireEvent.click(container.querySelector('button#remove'));
   expect(container.querySelector('span').textContent).toEqual(

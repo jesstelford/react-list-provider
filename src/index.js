@@ -59,10 +59,15 @@ export const ListProvider = ({ keyBy, name, ...props }) => {
     [hasItem, items, setItems]
   );
 
-  const removeItem = useCallback(
-    (itemId) => setItems(items.filter((item) => item[keyBy] !== itemId)),
+  const removeItems = useCallback(
+    (itemIds) =>
+      setItems(items.filter((item) => !itemIds.includes(item[keyBy]))),
     [setItems, items]
   );
+
+  const removeItem = useCallback((itemId) => removeItems([itemId]), [
+    removeItems,
+  ]);
 
   const clearItems = useCallback(() => setItems([]), [setItems]);
 
@@ -81,6 +86,7 @@ export const ListProvider = ({ keyBy, name, ...props }) => {
         ...(keyBy && {
           updateItem,
           removeItem,
+          removeItems,
           getItem,
           hasItem,
         }),
